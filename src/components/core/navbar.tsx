@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-background-primary flex h-[calc(100vh-2rem)] w-[314px] flex-col items-center justify-between rounded-2xl px-2 py-4 text-center">
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex w-full flex-col items-center gap-4">
         <h1 className="mx-12 font-mono text-2xl font-bold">
           Watch <span className="text-accent">IO</span>
         </h1>
