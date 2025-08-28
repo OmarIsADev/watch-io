@@ -1,43 +1,17 @@
 "use client";
 import { Compass, Home, Play, Settings, User2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { watchStore } from "@/store/watch";
 import Button, { type ButtonProps } from "../ui/button";
 import Spacer from "../ui/spacer";
-import Image from "next/image";
-
-interface currentWatching {
-  name: string;
-  ep: number;
-  img: string;
-}
 
 export default function Navbar() {
-  const [currentWatchingList, setCurrentWatchingList] = useState<
-    currentWatching[]
-  >([
-    {
-      name: "test",
-      ep: 1,
-      img: "https://placehold.co/200x200",
-    },
-    {
-      name: "test2",
-      ep: 2,
-      img: "https://placehold.co/200x200",
-    },
-    {
-      name: "test3",
-      ep: 3,
-      img: "https://placehold.co/200x200",
-    },
-  ]);
-
-  useEffect(() => {}, []);
+  const { watched } = watchStore();
 
   return (
-    <nav className="bg-background-primary flex h-[calc(100vh-2rem)] flex-col items-center justify-between rounded-2xl px-2 py-4 text-center w-[314px]">
+    <nav className="bg-background-primary flex h-[calc(100vh-2rem)] w-[314px] flex-col items-center justify-between rounded-2xl px-2 py-4 text-center">
       <div className="flex flex-col items-center gap-4">
         <h1 className="mx-12 font-mono text-2xl font-bold">
           Watch <span className="text-accent">IO</span>
@@ -63,10 +37,10 @@ export default function Navbar() {
       </div>
 
       <div className="flex w-full flex-col items-start gap-2 px-2">
-        {currentWatchingList && (
+        {watched.length > 0 && (
           <>
             <small>Continue Watching</small>
-            {currentWatchingList.map((series) => (
+            {watched.slice(0, 3).map((series) => (
               <div className="flex w-full items-center gap-2" key={series.name}>
                 <Image
                   className="rounded-md"
@@ -79,11 +53,13 @@ export default function Navbar() {
 
                 <div className="flex flex-col justify-center text-start">
                   <b>{series.name}</b>
-                  <small className="text-zinc-500">Episode {series.ep}</small>
+                  <small className="text-zinc-500">
+                    Episode {(series.ep.at(-1) || 0) + 1}
+                  </small>
                 </div>
 
                 <Link
-                  href={`/watch/${series.name}/${series.ep}`}
+                  href={`/watch/${series.name}/${(series.ep.at(-1) || 0) + 1}`}
                   className="ml-auto"
                 >
                   <Play className="fill-foreground text-foreground size-8 rounded-full bg-zinc-500/10 p-2" />

@@ -4,9 +4,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Button from "../ui/button";
 import Input from "../ui/input";
+import UserStore from "@/store/user";
+import Link from "next/link";
 
 export default function TopNavbar() {
   const router = useRouter();
+
+  const { user } = UserStore();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,26 +48,37 @@ export default function TopNavbar() {
         />
       </form>
 
-      <div
-        tabIndex={0}
-        onClick={() => alert("suka")}
-        onKeyDown={(e) => ["Enter", " "].includes(e.key) && alert("suka")}
-        className="bg-background-primary flex h-10 items-center gap-2 rounded-full"
-      >
-        <Image
-          className="rounded-full"
-          unoptimized
-          src="https://placehold.co/200x200"
-          width={40}
-          height={40}
-          alt="user"
-        />
+      {user ? (
+        <div
+          tabIndex={0}
+          onClick={() => alert("suka")}
+          onKeyDown={(e) => ["Enter", " "].includes(e.key) && alert("suka")}
+          className="bg-background-primary flex h-10 items-center gap-2 rounded-full"
+        >
+          <Image
+            className="rounded-full"
+            unoptimized
+            src={user.img}
+            width={40}
+            height={40}
+            alt="user"
+          />
 
-        <div className="flex gap-2 pr-4">
-          Omar
-          <ChevronDown />
+          <div className="flex gap-2 pr-4">
+            {user.name}
+            <ChevronDown />
+          </div>
         </div>
-      </div>
+      ) : (
+        <Link href="/login" className="h-10 rounded-full">
+          <Button
+            tabIndex={-1}
+            className="bg-background-primary h-10 rounded-full px-6 py-2 text-sm"
+          >
+            Login
+          </Button>
+        </Link>
+      )}
     </div>
   );
 }
