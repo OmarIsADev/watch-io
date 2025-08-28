@@ -37,7 +37,7 @@ export default function Navbar() {
   useEffect(() => {}, []);
 
   return (
-    <nav className="bg-primary/10 flex h-[calc(100vh-2rem)] flex-col items-center justify-between rounded-2xl px-2 py-4 text-center">
+    <nav className="bg-background-primary flex h-[calc(100vh-2rem)] flex-col items-center justify-between rounded-2xl px-2 py-4 text-center w-[314px]">
       <div className="flex flex-col items-center gap-4">
         <h1 className="mx-12 font-mono text-2xl font-bold">
           Watch <span className="text-accent">IO</span>
@@ -62,7 +62,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex w-full px-2 flex-col items-start gap-2">
+      <div className="flex w-full flex-col items-start gap-2 px-2">
         {currentWatchingList && (
           <>
             <small>Continue Watching</small>

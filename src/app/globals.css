@@ -2,6 +2,7 @@
 
 :root {
   --background: #ffffff;
+  --background-primary: #f8f8f8;
   --foreground: #171717;
   --primary: #d8d8d8;
   --secondary: #a0a0a0;
@@ -9,6 +10,7 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-primary: var(--background-primary);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
@@ -21,6 +23,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --background-primary: #121212;
     --primary: #3a3a3a;
     --secondary: #5a5a5a;
   }
