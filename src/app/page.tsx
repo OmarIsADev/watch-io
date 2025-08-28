@@ -9,7 +9,7 @@ export default function Page() {
       home
       <Button
         className="mt-4"
-        suffix={<span>🚀</span>}
+        Suffix={<span>🚀</span>}
         loading={isLoading}
         onClick={() => {
           setIsLoading(true);
@@ -18,6 +18,12 @@ export default function Page() {
           }, 1000);
         }}
       >
+        Click Me
+      </Button>
+      <Button onClick={() => alert("test")} variant="ghost">
+        Click Me
+      </Button>
+      <Button variant="outline">
         Click Me
       </Button>
     </div>
