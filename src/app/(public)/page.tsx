@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Button from "@/components/ui/button";
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from "@/components/ui/dropdown";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +27,17 @@ export default function Page() {
       <Button variant="outline">
         Click Me
       </Button>
+
+      <Dropdown>
+        <DropdownTrigger>
+          <Button>Dropdown</Button>
+        </DropdownTrigger>
+        <DropdownContent>
+          <DropdownItem onClick={() => alert("test")}>
+            test
+          </DropdownItem>
+        </DropdownContent>
+      </Dropdown>
     </div>
   );
 }
