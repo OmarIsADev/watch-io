@@ -1,9 +1,9 @@
-import db from "@/libs/db";
-import { User } from "@/store/user";
 import { compare } from "bcrypt";
 import { serialize } from "cookie";
 import jwt from "jsonwebtoken";
 import { type NextRequest, NextResponse } from "next/server";
+import db from "@/libs/db";
+import type { User } from "@/store/user";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();

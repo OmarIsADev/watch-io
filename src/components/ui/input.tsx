@@ -34,7 +34,10 @@ export default function Input({
     >
       {Prefix && Prefix}
       <input
-        className={cn("outline-none self-stretch rounded-full px-4 py-2 flex-grow", className)}
+        className={cn(
+          "flex-grow self-stretch rounded-full px-4 py-2 outline-none",
+          className,
+        )}
         {...props}
       />
       {Suffix && Suffix}

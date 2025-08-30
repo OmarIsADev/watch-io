@@ -4,5 +4,10 @@ export default function Spacer({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div {...props} className={cn("w-[calc(100%-2rem)] bg-primary h-px mx-auto", className)}></div>;
+  return (
+    <div
+      {...props}
+      className={cn("bg-primary mx-auto h-px w-[calc(100%-2rem)]", className)}
+    ></div>
+  );
 }

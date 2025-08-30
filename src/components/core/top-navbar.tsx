@@ -1,17 +1,16 @@
 "use client";
-
 import { ChevronDown, Search, User2 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import UserStore from "@/store/user";
+import Button from "../ui/button";
 import {
   Dropdown,
   DropdownContent,
   DropdownItem,
   DropdownTrigger,
 } from "../ui/dropdown";
-import UserStore from "@/store/user";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Button from "../ui/button";
 import Input from "../ui/input";
 
 export default function TopNavbar() {

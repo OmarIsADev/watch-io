@@ -1,17 +1,16 @@
-/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */
 "use client";
+import { useEffect } from "react";
 import Navbar from "@/components/core/navbar";
 import TopNavbar from "@/components/core/top-navbar";
 import userStore from "@/store/user";
-import { useEffect } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { getUser } = userStore();
 
   useEffect(() => {
-    getUser()
-  }, [])
-  
+    getUser();
+  }, []);
+
   return (
     <>
       <Navbar />

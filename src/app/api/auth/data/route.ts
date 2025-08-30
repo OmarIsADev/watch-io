@@ -1,6 +1,6 @@
-import db from "@/libs/db";
 import { verify } from "jsonwebtoken";
 import type { NextRequest } from "next/server";
+import db from "@/libs/db";
 
 export async function GET(req: NextRequest) {
   const token = req.cookies.get("token")?.value;

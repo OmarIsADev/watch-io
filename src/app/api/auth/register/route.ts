@@ -1,6 +1,6 @@
-import db from "@/libs/db";
 import { genSalt, hash } from "bcrypt";
 import type { NextRequest } from "next/server";
+import db from "@/libs/db";
 
 export async function POST(req: NextRequest) {
   const newUser: {

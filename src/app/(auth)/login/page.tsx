@@ -1,9 +1,9 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
 import userStore, { type User } from "@/store/user";
-import { useRouter } from "next/navigation";
 
 function Page() {
   const router = useRouter();

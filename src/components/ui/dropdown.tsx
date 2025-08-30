@@ -1,6 +1,3 @@
-/** biome-ignore-all lint/a11y/useButtonType: false */
-/** biome-ignore-all lint/a11y/useKeyWithClickEvents: false */
-/** biome-ignore-all lint/suspicious/noExplicitAny: false */
 import {
   Children,
   cloneElement,
@@ -100,9 +97,14 @@ const DropdownTrigger = forwardRef<HTMLDivElement, DropdownTriggerProps>(
     return (
       <div ref={ref} className={cn("h-full w-fit", className)}>
         {children &&
-          cloneElement(children as React.ReactElement<any>, {
-            onClick: handleToggle,
-          })}
+          cloneElement(
+            children as React.ReactElement<{
+              onClick?: React.MouseEventHandler<HTMLButtonElement>;
+            }>,
+            {
+              onClick: handleToggle,
+            },
+          )}
       </div>
     );
   },
@@ -125,27 +127,35 @@ const Dropdown = ({ children }: DropdownProps) => {
     );
   };
 
-  const handleClose = () => {
-    dropdownRef.current?.setAttribute("data-open", "false");
-  };
-
   return (
     <div className="relative">
       {Children.map(children, (child) => {
         if (isValidElement(child)) {
           // Type assertion for DropdownContent
           if (child.type === DropdownContent) {
-            return cloneElement(child as React.ReactElement<any>, {
-              ref: dropdownRef,
-              triggerRef: triggerRef,
-            });
+            return cloneElement(
+              child as React.ReactElement<{
+                triggerRef?: React.RefObject<HTMLDivElement | null>;
+                ref?: React.RefObject<HTMLDivElement | null>;
+              }>,
+              {
+                ref: dropdownRef,
+                triggerRef: triggerRef,
+              },
+            );
           }
           // Type assertion for DropdownTrigger
           if (child.type === DropdownTrigger) {
-            return cloneElement(child as React.ReactElement<any>, {
-              handleToggle,
-              ref: triggerRef,
-            });
+            return cloneElement(
+              child as React.ReactElement<{
+                handleToggle?: React.MouseEventHandler<HTMLButtonElement>;
+                ref?: React.RefObject<HTMLDivElement | null>;
+              }>,
+              {
+                handleToggle,
+                ref: triggerRef,
+              },
+            );
           }
         }
         return child;

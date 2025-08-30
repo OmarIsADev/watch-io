@@ -1,7 +1,7 @@
 import { createClient } from "@libsql/client";
 
 const db = createClient({
-    url: "file:./dev.db"
-})
+  url: "file:./dev.db",
+});
 
-export default db
+export default db;
