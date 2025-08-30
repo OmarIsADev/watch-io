@@ -27,7 +27,7 @@ export default function Navbar() {
             Explore
           </NavbarButton>
           <Spacer className="my-4" />
-          <NavbarButton href="/settings" Prefix={<User2 />}>
+          <NavbarButton href="/profile" Prefix={<User2 />}>
             Profile
           </NavbarButton>
           <NavbarButton href="/profile/settings" Prefix={<Settings />}>

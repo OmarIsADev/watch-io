@@ -32,7 +32,7 @@ export default function Page() {
         <DropdownTrigger>
           <Button>Dropdown</Button>
         </DropdownTrigger>
-        <DropdownContent>
+        <DropdownContent className="bg-background-primary">
           <DropdownItem onClick={() => alert("test")}>
             test
           </DropdownItem>

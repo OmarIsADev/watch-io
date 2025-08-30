@@ -1,3 +1,6 @@
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
+  - bcrypt
+  - node-base64
   - sharp
+  - sqlite3

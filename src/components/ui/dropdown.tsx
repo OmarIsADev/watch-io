@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/a11y/useButtonType: false */
-/** biome-ignore-all lint/a11y/useKeyWithClickEvents: <explanation> */
+/** biome-ignore-all lint/a11y/useKeyWithClickEvents: false */
 /** biome-ignore-all lint/suspicious/noExplicitAny: false */
 import {
   Children,
@@ -16,12 +16,13 @@ import Button from "./button";
 interface DropdownContentProps {
   children?: React.ReactNode;
   triggerRef?: React.RefObject<HTMLDivElement>;
+  className?: string;
   ref?: React.RefObject<HTMLDivElement>;
 }
 
 // DropdownContent component receives the ref from its parent.
 const DropdownContent = forwardRef<HTMLDivElement, DropdownContentProps>(
-  ({ children, triggerRef }, ref) => {
+  ({ children, triggerRef, className }, ref) => {
     const [triggerWidth, setTriggerWidth] = useState<number | undefined>(
       undefined,
     );
@@ -56,6 +57,7 @@ const DropdownContent = forwardRef<HTMLDivElement, DropdownContentProps>(
         ref={ref}
         className={cn(
           "bg-background-secondary border-primary absolute top-full left-0 z-10 mt-2 hidden w-fit rounded-lg border p-1 shadow-md shadow-black data-[open=true]:block",
+          className,
         )}
         style={{
           minWidth: `${triggerWidth}px`,
@@ -87,15 +89,16 @@ const DropdownItem = ({ children, onClick }: DropdownItemProps) => {
 
 interface DropdownTriggerProps {
   children?: React.ReactElement;
+  className?: string;
   handleToggle?: React.MouseEventHandler<HTMLButtonElement>;
   ref?: React.RefObject<HTMLDivElement>;
 }
 
 // DropdownTrigger component receives the handleToggle function.
 const DropdownTrigger = forwardRef<HTMLDivElement, DropdownTriggerProps>(
-  ({ children, handleToggle }, ref) => {
+  ({ children, handleToggle, className }, ref) => {
     return (
-      <div ref={ref} className="w-fit">
+      <div ref={ref} className={cn("h-full w-fit", className)}>
         {children &&
           cloneElement(children as React.ReactElement<any>, {
             onClick: handleToggle,

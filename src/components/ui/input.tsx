@@ -12,7 +12,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const inputVariant: Record<"default" | "outline" | "ghost", string> = {
   default: "bg-primary pr-3",
   ghost: "bg-none hover:bg-primary/50",
-  outline: "border border-primary hover:bg-primary",
+  outline: "border border-primary hover:bg-primary rounded-full outline-none",
 };
 
 export default function Input({
@@ -34,7 +34,7 @@ export default function Input({
     >
       {Prefix && Prefix}
       <input
-        className={cn("self-stretch rounded-2xl px-4 flex-grow", className)}
+        className={cn("outline-none self-stretch rounded-full px-4 py-2 flex-grow", className)}
         {...props}
       />
       {Suffix && Suffix}

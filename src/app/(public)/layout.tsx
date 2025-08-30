@@ -1,10 +1,24 @@
-import TopNavbar from '@/components/core/top-navbar'
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */
+"use client";
+import Navbar from "@/components/core/navbar";
+import TopNavbar from "@/components/core/top-navbar";
+import userStore from "@/store/user";
+import { useEffect } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const { getUser } = userStore();
+
+  useEffect(() => {
+    getUser()
+  }, [])
+  
   return (
-    <div className='w-full flex flex-col gap-4'>
+    <>
+      <Navbar />
+      <div className="flex w-full flex-col gap-4">
         <TopNavbar />
         {children}
-    </div>
-  )
+      </div>
+    </>
+  );
 }

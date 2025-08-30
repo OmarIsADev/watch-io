@@ -1,18 +1,21 @@
 import { Loader2 } from "lucide-react";
 import { cn } from "@/libs/utils";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   Suffix?: React.ReactNode;
   Prefix?: React.ReactNode;
   loading?: boolean;
-  variant?: "default" | "outline" | "ghost";
-};
+  variant?: "default" | "outline" | "ghost" | "link";
+}
 
-const buttonVariant: Record<"default" | "outline" | "ghost", string> = {
-  default: "bg-primary hover:bg-primary/80",
-  ghost: "bg-none hover:bg-primary/50",
-  outline: "border border-primary hover:bg-primary",
-};
+const buttonVariant: Record<"default" | "outline" | "ghost" | "link", string> =
+  {
+    default: "bg-primary hover:bg-primary/80",
+    ghost: "bg-none hover:bg-primary/50",
+    outline: "border border-primary hover:bg-primary",
+    link: "bg-none p-0 text-blue-500 hover:underline",
+  };
 
 export default function Button({
   children,
